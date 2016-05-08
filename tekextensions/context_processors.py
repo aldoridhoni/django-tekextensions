@@ -2,8 +2,9 @@ from django.conf import settings
 from django.contrib.sites.models import Site, RequestSite
 
 
-def admin_media_prefix(request):
-    return {'ADMIN_MEDIA_PREFIX': settings.ADMIN_MEDIA_PREFIX }
+# noinspection PyUnusedLocal
+def static_url_prefix(request):
+    return {'STATIC_URL': settings.STATIC_URL}
 
 
 def current_site(request):
@@ -15,8 +16,8 @@ def current_site(request):
     context_name = 'CURRENT_SITE'
 
     try:
-        current_site = Site.objects.get_current()
-        return { context_name: current_site, }
+        site = Site.objects.get_current()
+        return {context_name: site}
     except Site.DoesNotExist:
         # always return a dict, no matter what!
-        return { context_name: RequestSite(request)}
+        return {context_name: RequestSite(request)}

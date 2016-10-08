@@ -13,7 +13,8 @@ setup(
     url='http://github.com/adamestein/django-tekextensions',
     download_url='http://github.com/adamestein/django-tekextensions',
     license='BSD',
-    packages=['tekextensions', 'tekextensions.templates', 'tekextensions.static'],
+    packages=['tekextensions'],
+    include_package_data = True,
     classifiers = [
             'Framework :: Django',
             'License :: OSI Approved :: BSD License',

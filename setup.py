@@ -25,7 +25,7 @@ class osx_install_data(install_data):
 if sys.platform == "darwin":
     cmdclasses = {'install_data': osx_install_data}
 else:
-cmdclasses = {'install_data': install_data}
+    cmdclasses = {'install_data': install_data}
 
 def fullsplit(path, result=None):
     """

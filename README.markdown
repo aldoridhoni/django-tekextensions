@@ -33,7 +33,7 @@ Fill in the STATIC variables as appropriate.
 urls.py
 --------------------
     from teksextensions import views as t_views
-    url(r'^add/(?P<model_name>\w+)/?$', t_views.add_new_model),
+    url(r'^add/(?P<model_name>\w+)/?$', t_views.add_new_model, name='popup'),
 
 forms.py
 --------------------
@@ -58,8 +58,8 @@ If you decide to specify the template argument to SelectWithPopup(), your templa
 create the green plus sign link just as Django Admin does:
 
     {% load static %}
-    <a href="/add/{{ model }}/" class="add-another" id="add_id_{{ field }}" onclick="return showAddAnotherPopup(this);">
-        <img src="{% static 'admin/img/icon_addlink.gif' %}">
+    <a href="{% url 'popup' model_name=model %}/" class="add-another" id="add_id_{{ field }}" onclick="return showAddAnotherPopup(this);">
+    <img src="{% static 'admin/img/icon_addlink.gif' %}">
     </a>
 
 The _model_ and _field_ values will be filled in automatically as the template is rendered.
@@ -70,7 +70,7 @@ html
 
 By default, the template is named _popup.html_. This can be overridden by sending in the template name via the url. For example:
 
-    url(r'^add/(?P<model_name>\w+)/?$', 'tekextensions.views.add_new_model', {'template': 'my_template'})
+    url(r'^add/(?P<model_name>\w+)/?$', tekextensions.views.add_new_model, name='popup, {'template': 'my_template'})
     
 An example of a simple template:
 

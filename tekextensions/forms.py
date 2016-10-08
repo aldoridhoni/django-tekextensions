@@ -1,4 +1,4 @@
-from django.db.models.loading import get_models, get_apps
+from django.db.models import get_models, get_app
 from django.forms.models import modelform_factory
 
 
@@ -7,7 +7,7 @@ def normalize_model_name(model_name):
 
 
 def get_model_form(model_name):
-    for app in get_apps():
+    for app in get_app():
         for model in get_models(app):
             if model.__name__ == model_name: 
                 return modelform_factory(model)

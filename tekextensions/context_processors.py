@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.contrib.sites.models import Site, RequestSite
+from django.contrib.sites.shortcuts import get_current_site
 
 
 # noinspection PyUnusedLocal
@@ -14,10 +14,5 @@ def current_site(request):
     """
 
     context_name = 'CURRENT_SITE'
-
-    try:
-        site = Site.objects.get_current()
-        return {context_name: site}
-    except Site.DoesNotExist:
-        # always return a dict, no matter what!
-        return {context_name: RequestSite(request)}
+    site = get_current_site
+    return {context_name: site}

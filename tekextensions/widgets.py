@@ -19,7 +19,7 @@ class PopUpBaseWidget(forms.Widget):
         if not self.template:
             anchor = """
 {% load static %}
-<a href="/add/{{ model }}/" class="add-another" id="add_id_{{ field }}" onclick="return showAddAnotherPopup(this);">
+<a href="{% url 'popup' model_name=model %}/" class="add-another" id="add_id_{{ field }}" onclick="return showAddAnotherPopup(this);">
     <img src="{% static 'admin/img/icon_addlink.gif' %}">
 </a>
 """

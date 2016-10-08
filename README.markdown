@@ -19,7 +19,10 @@ settings.py
                 'context_processors': [
                     ...
                     'tekextensions.context_processors.static_url_prefix',
-    )
+                ]
+            }
+         }
+    ]
     INSTALLED_APPS = [
         ...
         'tekextensions',

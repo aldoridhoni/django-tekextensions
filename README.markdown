@@ -1,4 +1,4 @@
-*tekextensions* is made for Django 1.6+.
+*tekextensions* is made for Django 1.9+.
 
 admin popups
 ====================
@@ -12,18 +12,25 @@ settings.py
     STATIC_URL = ...
     STATICFILES_DIRS = ...
     STATICFILES_FINDERS = ..._
-    TEMPLATE_CONTEXT_PROCESSORS = (
-        'tekextensions.context_processors.static_url_prefix',
+    TEMPLATES = [
+        {
+            ...
+            'OPTIONS': {
+                'context_processors': [
+                    ...
+                    'tekextensions.context_processors.static_url_prefix',
     )
-    INSTALLED_APPS = (
+    INSTALLED_APPS = [
+        ...
         'tekextensions',
-    )
+    ]
     
 Fill in the STATIC variables as appropriate.
 
 urls.py
 --------------------
-    url(r'^add/(?P<model_name>\w+)/?$', 'tekextensions.views.add_new_model'),
+    from teksextensions import views as t_views
+    url(r'^add/(?P<model_name>\w+)/?$', t_views.add_new_model),
 
 forms.py
 --------------------
@@ -31,7 +38,7 @@ forms.py
 
     from tekextensions.widgets import SelectWithPopUp
     from django import forms
-    from .models import MyModel
+    from .models import MyModel, AnotherModel
     
     class CustomForm(forms.Form):
         company = forms.ModelChoiceField(CustomModel.objects, widget=SelectWithPopUp)
@@ -40,8 +47,8 @@ forms.py
         class Meta:
             model=MyModel
             widgets = {
-                'field1': SelectWithPopup,
-                'field2': SelectWithPopup(model='AnotherModel')
+                'field1': SelectWithPopUp,
+                'field2': SelectWithPopUp(model='AnotherModel')
             }
 
 If you decide to specify the template argument to SelectWithPopup(), your template will need to contain the following in order to

@@ -1,7 +1,7 @@
 try: 
     from setuptools import setup
 except ImportError: 
-    from distutils.core import setup 
+    from distutils.core import setup
 
 setup(
     name='django-tekextensions',
@@ -13,7 +13,7 @@ setup(
     url='http://github.com/adamestein/django-tekextensions',
     download_url='http://github.com/adamestein/django-tekextensions',
     license='BSD',
-    packages=['tekextensions'],
+    packages=['tekextensions', 'tekextensions.templates', 'tekextensions.static'],
     classifiers = [
             'Framework :: Django',
             'License :: OSI Approved :: BSD License',

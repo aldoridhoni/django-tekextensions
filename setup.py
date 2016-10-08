@@ -51,7 +51,7 @@ packages, package_data = [], {}
 root_dir = os.path.dirname(__file__)
 if root_dir != '':
     os.chdir(root_dir)
-extensions_dir = 'django_extensions'
+extensions_dir = 'tekextensions'
 
 for dirpath, dirnames, filenames in os.walk(extensions_dir):
     # Ignore PEP 3147 cache dirs and those whose names start with '.'

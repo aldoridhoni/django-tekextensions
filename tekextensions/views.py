@@ -1,7 +1,6 @@
 from django.forms import ValidationError
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 from django.utils.html import escape
 
 from .forms import get_model_form, normalize_model_name
@@ -30,4 +29,4 @@ def add_new_model(request, model_name, form=None, template='popup.html'):
         form = form()
 
     page_context = {'form': form, 'field': normal_model_name}
-    return render_to_response(template, page_context, context_instance=RequestContext(request))
+    return render(request, template, page_context)

@@ -1,5 +1,4 @@
 {% load staticfiles %}
-
 <html>
     <head>
         <title>Add {{ field }}</title>
@@ -9,7 +8,7 @@
     <body>
         <h1>Add {{ field }}</h1>
 
-        <form method="POST" action="/add/{{ field }}">
+        <form method="POST" action="{% url 'popup' model_name=field %}">
             {% csrf_token %}
 
             <table>

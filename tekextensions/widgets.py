@@ -31,7 +31,7 @@ class PopUpBaseWidget(forms.Widget):
 
     # noinspection PyClassHasNoInit
     class Media:
-        js = ("admin/js/admin/RelatedObjectLookups.js", )
+        js = ("tekextensions/popup.js", )
 
 
 class FilteredMultipleSelectWithPopUp(PopUpBaseWidget, FilteredSelectMultiple):
